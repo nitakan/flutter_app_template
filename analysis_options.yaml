@@ -1,0 +1,18 @@
+# https://pub.dev/packages/pedantic_mono
+include: package:pedantic_mono/analysis_options.yaml
+
+linter:
+  rules:
+    one_member_abstracts: false
+    avoid_classes_with_only_static_members: false
+    prefer_constructors_over_static_methods: false
+    avoid_setters_without_getters: false
+    cascade_invocations: false
+analyzer:
+  strong-mode:
+    implicit-dynamic: true
+  exclude:
+    - lib/**/*.g.dart
+    - lib/**/*.freezed.dart
+    - test/_data/**
+    - lib/fonts/**.*

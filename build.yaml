@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**/*_state.dart
+            - lib/**/*_data.dart
+            - lib/domain/**.dart
+builders:
+  freezed:
+    import: "package:freezed/builder.dart"
+    builder_factories: ["freezed"]
+    build_extensions: { ".dart": [".freezed.dart"] }
+    auto_apply: dependents
+    build_to: source
+    runs_before: ["json_serializable|json_serializable"]

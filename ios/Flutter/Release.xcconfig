@@ -1,0 +1,8 @@
+#include "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+// https://medium.com/flutter-jp/flavor-b952f2d05b5d
+// > 一方、Release.xcconfigには以下を追加しておきます。
+// > TRACK_WIDGET_CREATION=
+// > これを指定しておかないとアーカイブ時にエラーが発生します。
+// > https://github.com/flutter/flutter/issues/24239#issuecomment-450068065
+TRACK_WIDGET_CREATION=
