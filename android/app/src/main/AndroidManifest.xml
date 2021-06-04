@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.nitakan.appbase">
+    package="net.nitakan.github_finder">
    <application
-        android:label="にたかんのアプリ"
+        android:label="GithubFinder"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

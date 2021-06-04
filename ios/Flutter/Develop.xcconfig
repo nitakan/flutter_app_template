@@ -8,6 +8,6 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-PRODUCT_BUNDLE_IDENTIFIER=net.nitakan.appbase.develop
-DISPLAY_NAME=(D)にたかんのアプリ
+PRODUCT_BUNDLE_IDENTIFIER=net.nitakan.github_finder.develop
+DISPLAY_NAME=(D)GithubFinder
 APP_VERSION_NAME=${FLUTTER_BUILD_NAME}-DEV

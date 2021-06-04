@@ -1,4 +1,4 @@
-package net.nitakan.appbase
+package net.nitakan.github_finder
 
 import io.flutter.embedding.android.FlutterActivity
 
