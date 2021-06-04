@@ -41,7 +41,7 @@ class LoadingAware extends HookWidget {
   final LoadingType type;
   @override
   Widget build(BuildContext context) {
-    return _create();
+    return Directionality(textDirection: TextDirection.ltr, child: _create());
   }
 
   Widget _create() {

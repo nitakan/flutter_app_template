@@ -7,7 +7,7 @@ import 'sign_in_controller.dart';
 
 class SignInScreen extends HookWidget {
   Future<void> show(BuildContext context) async {
-    await context.read(routerProvider).pushNamed(AppRouter.path.signIn);
+    await context.read(AppRouter.provider).pushNamed(AppRouter.path.signIn);
   }
 
   @override

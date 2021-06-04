@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_base/providers/providers.dart';
 import 'package:flutter/material.dart';
 
 import 'application/authenticator.dart';
@@ -10,25 +11,27 @@ import 'ui/splash.dart';
 part 'router_routes.dart';
 
 class AppRouter {
-  AppRouter({
-    required this.navigatorKey,
-    required this.authenticator,
-  }) {
+  AppRouter(this.ref) {
     _initialize();
   }
 
-  final GlobalKey navigatorKey;
-  final Authenticator authenticator;
+  GlobalKey get navigatorKey => ref.read(navigatorKeyProvider);
+  Authenticator get authenticator => Authenticator.of(ref);
+  final ProviderReference ref;
+
+  static final provider = Provider((ref) => AppRouter(ref));
   static final path = AppPaths();
   static const _routes = _Routes();
 
   void _initialize() {
-    authenticator.stream.listen((changedState) {
-      changedState.map(unauthenticated: (_) {
-        pushReplacementNamed(path.signIn);
-      }, authenticated: (authenticated) {
-        pushReplacementNamed(path.home);
-      });
+    authenticator.stream.listen(_onAuthenticationChanged);
+  }
+
+  void _onAuthenticationChanged(AuthenticateState changedState) {
+    changedState.map(unauthenticated: (_) {
+      pushReplacementNamed(path.signIn);
+    }, authenticated: (authenticated) {
+      pushReplacementNamed(path.home);
     });
   }
 

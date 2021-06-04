@@ -1,3 +1,4 @@
+import 'package:app_base/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -34,9 +35,9 @@ class App extends HookWidget {
       ],
       supportedLocales: const [kLocale],
       navigatorKey: useProvider(navigatorKeyProvider),
-      onGenerateRoute: useProvider(routerProvider).onGenerateRoutes,
-      navigatorObservers: useProvider(routerProvider).observers,
-      initialRoute: useProvider(routerProvider).initialRoute,
+      onGenerateRoute: useProvider(AppRouter.provider).onGenerateRoutes,
+      navigatorObservers: useProvider(AppRouter.provider).observers,
+      initialRoute: useProvider(AppRouter.provider).initialRoute,
       title: title ?? 'アプリ',
       theme: appThemeLight ?? ThemeData.light(),
       darkTheme: appThemeDark ?? ThemeData.dark(),

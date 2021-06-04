@@ -10,7 +10,7 @@ class HomeScreen extends HookWidget {
   const HomeScreen();
 
   Future<void> show(BuildContext context) async {
-    await context.read(routerProvider).pushNamed(AppRouter.path.home);
+    await context.read(AppRouter.provider).pushNamed(AppRouter.path.home);
   }
 
   @override

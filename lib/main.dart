@@ -1,3 +1,4 @@
+import 'package:app_base/ui/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -10,9 +11,11 @@ import 'ui/theme.dart';
 Future<void> main({AppEnvironment env = AppEnvironment.develop}) async {
   await _initializeApp();
   runApp(ProviderScope(
-    child: App(
-      appThemeLight: AppTheme.lightTheme,
-      appThemeDark: AppTheme.darkTheme,
+    child: LoadingAware(
+      child: App(
+        appThemeLight: AppTheme.lightTheme,
+        appThemeDark: AppTheme.darkTheme,
+      ),
     ),
   ));
 }
