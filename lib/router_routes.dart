@@ -7,6 +7,7 @@ class AppPaths {
   final root = '/';
   final home = '/home';
   final signIn = '/signIn';
+  final githubRepository = '/github/repositories';
 }
 
 class _Routes {
@@ -22,6 +23,10 @@ class _Routes {
         ),
     AppRouter.path.signIn: (settings) => MaterialPageRoute(
           builder: (context) => SignInScreen(),
+          settings: settings,
+        ),
+    AppRouter.path.githubRepository: (settings) => MaterialPageRoute(
+          builder: (context) => GithubRepositoriesScreen(),
           settings: settings,
         ),
   };

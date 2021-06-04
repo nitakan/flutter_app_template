@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'application/authenticator.dart';
+import 'features/github/repositories_screen.dart';
 import 'features/home/home_screen.dart';
 import 'features/sign_in/sign_in_screen.dart';
 import 'ui/splash.dart';

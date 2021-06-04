@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../providers/providers.dart';
 import '../../router.dart';
 import '../../ui/loading.dart';
-import 'home_controller.dart';
+import '../github/repositories_screen.dart';
 
 class HomeScreen extends HookWidget {
   const HomeScreen();
@@ -18,18 +18,20 @@ class HomeScreen extends HookWidget {
     return LoadingAware(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Title'),
-          actions: [
-            IconButton(
-              onPressed: () {
-                context.read(HomeController.provider).signOut();
-              },
-              icon: const Icon(Icons.exit_to_app),
-            ),
-          ],
+          title: const Text('Github Api Sample'),
         ),
-        body: const Center(
-          child: Text('Home'),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  GithubRepositoriesScreen.show(context);
+                },
+                child: const Text('Search Repositories'),
+              ),
+            ],
+          ),
         ),
       ),
     );

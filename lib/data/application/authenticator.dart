@@ -6,10 +6,8 @@ import '../../domain/account.dart';
 class AppAuthenticator extends Authenticator {
   @override
   Future<void> initialize() async {
-    await Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _authenticateSubject.add(AuthenticateState.unauthenticated()),
-    );
+    final account = Account(accountId: AccountId('TEST'));
+    authenticateStateSink.add(AuthenticateState.authenticated(account));
   }
 
   @override
