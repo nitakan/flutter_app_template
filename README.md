@@ -15,11 +15,15 @@ created on 2021/6
 3. Rename package name and app id
     - Change Android application id
         - `applicationId` in `android/app/build.gradle`
-        - `package` in Change Android
+        - `package` in all AndroidManifest.xml
     - Change java/kotlin package name and directories
     - Change iOS bundle id
         - `PRODUCT_BUNDLE_IDENTIFIER` in `ios/Flutter/[Develop|Staging|Production].xcconfig`
-
+4. Recreate auto generated files
+    - Remove `ios/Pods` directory
+    - Remove `ios/Flutter/Generated.xcconfig`
+    - Run `flutter clean` and `flutter pub get`
+    - Run `pod install` in `ios`
 
 # Copyright
 see ./LICENSE
