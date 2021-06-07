@@ -2,6 +2,7 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../application/authenticator.dart';
 import '../../domain/account.dart';
+import '../../utils/object_extension.dart';
 
 class AppAuthenticator extends Authenticator {
   @override
@@ -72,9 +73,4 @@ class AppAuthenticator extends Authenticator {
   void dispose() {
     _authenticateSubject.close();
   }
-}
-
-extension StreamExt<T> on Stream<T?> {
-  Stream<T> nonNull() =>
-      where((event) => event != null).map((event) => event as T);
 }

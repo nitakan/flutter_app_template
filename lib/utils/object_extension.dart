@@ -8,3 +8,8 @@ extension ObjectExtension<T> on T {
     return this;
   }
 }
+
+extension StreamExt<T> on Stream<T?> {
+  Stream<T> nonNull() =>
+      where((event) => event != null).map((event) => event as T);
+}

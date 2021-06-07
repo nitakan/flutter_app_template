@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../deeplink/deeplink.dart';
 import '../../providers/providers.dart';
 import '../../router.dart';
 import 'home_controller.dart';
@@ -20,7 +21,9 @@ class HomeScreen extends HookWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read(HomeController.provider).signOut();
+              context.read(DeepLinkStack.provider).push(LinkParameter(
+                  (context, _) =>
+                      context.read(HomeController.provider).signOut()));
             },
             icon: const Icon(Icons.exit_to_app),
           ),

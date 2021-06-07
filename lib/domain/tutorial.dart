@@ -10,7 +10,7 @@ class Tutorial with _$Tutorial {
 }
 
 @freezed
-abstract class WalkThrough with _$WalkThrough {
+class WalkThrough with _$WalkThrough {
   const factory WalkThrough({
     required Uri image,
     required String title,

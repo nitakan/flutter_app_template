@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:app_base/providers/providers.dart';
 import 'package:flutter/material.dart';
 
 import 'application/authenticator.dart';
+import 'deeplink/deeplink.dart';
 import 'features/home/home_screen.dart';
 import 'features/sign_in/sign_in_screen.dart';
+import 'providers/providers.dart';
 import 'ui/splash.dart';
 
 part 'router_routes.dart';
@@ -16,7 +17,13 @@ class AppRouter {
   }
 
   GlobalKey get navigatorKey => ref.read(navigatorKeyProvider);
+
   Authenticator get authenticator => Authenticator.of(ref);
+
+  DeepLinkStack get deepLink => ref.read(DeepLinkStack.provider);
+
+  BuildContext get requireContext => navigatorKey.currentContext!;
+
   final ProviderReference ref;
 
   static final provider = Provider((ref) => AppRouter(ref));
@@ -25,6 +32,7 @@ class AppRouter {
 
   void _initialize() {
     authenticator.stream.listen(_onAuthenticationChanged);
+    deepLink.stream.listen(_onDeepLinkExecuted);
   }
 
   void _onAuthenticationChanged(AuthenticateState changedState) {
@@ -33,6 +41,10 @@ class AppRouter {
     }, authenticated: (authenticated) {
       pushReplacementNamed(path.home);
     });
+  }
+
+  void _onDeepLinkExecuted(LinkParameter param) {
+    param.onLinkExecuted?.call(requireContext, param.arguments);
   }
 
   Route<dynamic>? onGenerateRoutes(RouteSettings settings) {
